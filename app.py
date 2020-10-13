@@ -29,16 +29,14 @@ def delete(task):
     return redirect(url_for('main'))
 
 
+
+
 @app.route('/update/<task>', methods=['GET','POST'])
-def update(task):
-    # if request.method == 'POST':
-    #     new_task = request.form['new_task']
-    if main() == True:
-        # if request.method == 'POST':
-        update_task = request.form['new_task']
-        task =  update_task
-        if task in db:
-            db[0]= db.append(task)
+def update(task , update_task):
+    for key, value in enumerate(db):
+        if key == task:
+            db[key]= update_task
+        return redirect(url_for('details.html', todo = db, name = 'Sssng'))
     
     return redirect(url_for('main'))
 
